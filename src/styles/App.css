@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "iconfont-arrow";
+  src:url('../font/icons/iconfont.woff') format('woff'),
+  url('../font/icons/iconfont.svg#iconfont') format('svg');
+}
+ // url('../font/icons/iconfont.eot') format('embedded-opentype'),
+ // url('../font/icons/iconfont.ttf') format('truetype'),
+*{
+  padding: 0;
+  margin:0;
+}
 body,html{
   width: 100%;
   height: 100%;
@@ -25,7 +36,56 @@ body,html{
   overflow: hidden;
 
   background-color: #ddd;
+  perspective:1800px;
 }
+.img-sec .img-figure{
+  position: absolute;
+  box-sizing: border-box;
+  width:250px;
+  height: 230px;
+  padding: 10px;
+  margin:0;
+  background-color: #fff;
+  border:2px dashed #ddd;
+  cursor: pointer;
+  transform-origin:0 50% 0;
+  transform-style:preserve-3d;
+  transition:transform 0.6s ease-in-out,left 0.6s ease-in-out, top 0.6s ease-in-out;
+}
+.img-sec .img-figure img{
+  width: 230px;
+  height: 180px;
+}
+.img-sec .img-figure figcaption{
+  text-align: center;
+}
+.img-sec .img-figure figcaption .img-title{
+  margin:10px 0 0 0;
+  font-size: 16px;
+  color: #a7a0a2;
+}
+.img-sec .img-figure.inverse figcaption .fig-back{
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  display: block;
+}
+.img-sec .img-figure.inverse.center{
+  transform:translate(250px) rotateY(180deg);
+}
+.img-sec .img-figure.inverse.center figcaption .fig-back{
+  transform:rotateY(180deg);
+}
+
+.img-sec .img-figure.inverse.center img,
+.img-sec .img-figure.inverse img,
+.img-sec .img-figure.inverse.center .img-title,
+.img-sec .img-figure.inverse .img-title,
+.img-sec .img-figure .fig-back{
+  display: none;
+}
+
 /* img-sec -- end */
 
 /* controller-nav -- start */
@@ -38,5 +98,34 @@ body,html{
   z-index: 101;
 
   text-align: center;
+}
+.controller-nav .imgCtrl{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-color: #aaa;
+  cursor: pointer;
+  border-radius: 30px;
+  transform:scale(0.5);
+  transition:transform 0.6s ease-in-out, background-color 0.6s;
+}
+.controller-nav .imgCtrl.centerBtn{
+  transform:scale(1);
+}
+.controller-nav .imgCtrl.centerBtn::after{
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+  font-family: "iconfont-arrow";
+  content:"\e608";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+}
+.controller-nav .imgCtrl.centerBtn.inverseBtn{
+  background-color: #888;
+  transform:rotateY(180deg) translateZ(1px);
 }
 /* controller-nav -- end */
